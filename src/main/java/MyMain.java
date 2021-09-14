@@ -8,8 +8,17 @@ public class MyMain {
     // Ex. binaryToDecimal("1010") => 10 (ten)
     //     binaryToDecimal("110010") => 50
     public static int binaryToDecimal(String binary) {
-        // REPLACE WITH YOUR CODE
-        return -1;
+        int x = Integer.parseInt(binary);
+        int loop = 0;
+        int sum = 0;
+        while (x > 0){
+            int lastDigit = x % 10;
+            sum += lastDigit * Math.pow(2, loop);
+            loop += 1;
+            x = x / 10;
+
+        }
+        return sum;
     }
 
     // Given a decimal number (e.g. 152) as input, and returns a String
@@ -17,13 +26,33 @@ public class MyMain {
     // Ex. decimalToBinary(7) => "111"
     //     decimalToBinary(152) => "10011000"
     public static String decimalToBinary(int decimal) {
-        // REPLACE WITH YOUR CODE
-        return "";
+        int x = 0;
+        String str = "";
+        if (decimal == 0){
+        return "0";
+        }
+        while (decimal > 0) {
+            x = decimal % 2;
+            str = x + str;
+            decimal = decimal / 2;
+        }
+        return str;
     }
     
     
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
-        // YOUR CODE HERE
+//        Type in a number in binary format:
+//        1111111111
+//        That is equal to the decimal value: 1023
+//        Type in a number in decimal format:
+//        13
+//        That is equal to the binary value: 101
+        System.out.println("Type in a number in binary format:");
+        String binary = scan.next();
+        System.out.println("That is equal to the decimal value: " + binaryToDecimal(binary));
+        System.out.println("Type in a number in decimal format:");
+        int decimal = scan.nextInt();
+        System.out.println("This is equal to the binary value: " + decimalToBinary(decimal));
     }
 }
